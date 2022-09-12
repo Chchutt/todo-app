@@ -6,23 +6,26 @@ import Task from "../task/task";
 
 export default class TaskList extends React.Component {
 
+
+
     render() {
 
-        const { onToggleActive, onToggleLeft, visibleItems } = this.props
+        const { onToggleActive, onToggleLeft, visibleItems, onToggleEdit } = this.props
         const element = visibleItems.map(item => {
-            const {createdTime} = item
+            const {currentDate} = item
             const {description} = item
             const {id} = item
             const {active} = item
             const {status} = item
-            return (
 
+            return (
                 <Task
                     description={description}
-                    created={createdTime}
+                    currentDate={currentDate}
                     id={id}
                     active={active}
                     status={status}
+                    onToggleEdit={() => onToggleEdit(id)}
                     onToggleActive={() => onToggleActive(id)}
                     onToggleLeft={() => onToggleLeft(id)}
                 />

@@ -3,6 +3,7 @@ import AppHeader from "../app-header/app-header";
 import Footer from "../footer/footer";
 import TaskList from "../task-list/task-list";
 
+
 export default class TodoApp extends React.Component{
 
     maxId = 100;
@@ -20,11 +21,12 @@ export default class TodoApp extends React.Component{
         return {
             id: this.maxId++,
             description: text,
-            createdTime: text,
             active: false,
-            status: 'active'
+            status: 'active',
+            currentDate: new Date(),
         }
-    }
+    };
+
 
 
     addItem = (text) => {
@@ -34,6 +36,7 @@ export default class TodoApp extends React.Component{
             return{
                 tasksData: newArray
             }
+
         })
     }
 
@@ -64,37 +67,6 @@ export default class TodoApp extends React.Component{
         })
     };
 
-    // filterActive = ((item) => {
-    //     // this.setState(({tasksData}) => {
-    //     //     const newItem = tasksData.filter((el) => {
-    //     //         let {status} = el
-    //     //         if (status !== 'active') {
-    //     //             console.log(status)
-    //     //         }
-    //     //     })
-    //     //     const newArray = [...newItem]
-    //     //     return {
-    //     //         tasksData: newArray
-    //     //     }
-    //     // })
-    //     return item.filter((el) => !el.active)
-    // })
-    //
-    //
-    // filterDone = ((item) => {
-    //     // this.setState(({ tasksData }) => {
-    //     //     const newItem = tasksData.filter((el) => el.active);
-    //     //     const newArray = [...newItem]
-    //     //     return {
-    //     //         tasksData: newArray
-    //     //     }
-    //     // })
-    //     return item.filter((el) => el.active)
-    // })
-    //
-    // filterAll = (() =>{
-    //     return this.state.tasksData
-    // })
 
     filterChange = (newFilter) => {
         this.setState(({ filter }) =>{
@@ -136,6 +108,19 @@ export default class TodoApp extends React.Component{
         })
     };
 
+    onToggleEdit = (id) =>{
+        this.setState( ({ tasksData }) =>{
+            const idx = tasksData.findIndex((el) => el.id === id);
+            tasksData[idx].description = 'wowow'
+            const newItem = tasksData[idx]
+            const newArray = [...tasksData.slice(0, idx), newItem, ...tasksData.slice(idx +1)];
+            return{
+                tasksData: newArray
+            }
+        })
+    };
+
+
     render(){
         const leftCount = this.state.tasksData.filter((el) => el.active).length;
         const activeCount= this.state.tasksData.length - leftCount;
@@ -143,6 +128,7 @@ export default class TodoApp extends React.Component{
         const filter = this.state.filter;
         const visibleList = this.filterData(item, filter)
         return (
+
             <section className='todoapp'>
                 <AppHeader addItem={this.addItem}/>
                     <section className='mane'>
@@ -152,6 +138,7 @@ export default class TodoApp extends React.Component{
                             todos={this.state.tasksData}
                             onToggleActive = {this.onToggleActive}
                             onToggleLeft = {this.onToggleLeft}
+                            onToggleEdit={this.onToggleEdit}
                         />
                         <Footer
                             clearFilter={this.filterComAll}

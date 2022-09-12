@@ -11,6 +11,7 @@ export default class TasksFilter extends React.Component{
             return fn( newFilterName )
         }
 
+
         return(
             <ul className="filters">
                 <li>
