@@ -1,28 +1,26 @@
-import './creating-time-for-task.css'
-import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict'
-import React from "react";
+import './creating-time-for-task.css';
+import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
+import React from 'react';
+import * as PropType from 'prop-types';
 
+export default class CreatingTimeForTask extends React.Component {
+  state = {
+    time: '',
+  };
 
-export default class CreatingTimeForTask extends React.Component{
+  createdTime = setInterval(() => {
+    this.setState(() => {
+      let newTime = formatDistanceToNowStrict(this.props.currentDate);
+      return {
+        time: newTime,
+      };
+    });
+  }, 1000);
 
-    state = {
-        time: "",
-    }
-
-    createdTime = setInterval( () =>{
-        this.setState(({ time }) => {
-            let newTime = formatDistanceToNowStrict(this.props.currentDate)
-            return{
-                time: newTime
-            }
-        })
-        },1000)
-
-
-    render() {
-
-        return(
-        <span className="created">{`created ${this.state.time} ago`}</span>
-        )
-    }
+  render() {
+    return <span className="created">{`created ${this.state.time} ago`}</span>;
+  }
 }
+CreatingTimeForTask.propTypes = {
+  currentDate: PropType.any,
+};
