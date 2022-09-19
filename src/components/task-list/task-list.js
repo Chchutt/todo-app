@@ -31,8 +31,8 @@ export default class TaskList extends React.Component {
   }
 }
 TaskList.propTypes = {
-  onToggleActive: PropType.func
-  onToggleLeft: PropType.func
-  visibleItems: PropType.array
-  // newDescription: PropType.func,
+  onToggleActive: PropType.func,
+  onToggleLeft: PropType.func,
+  visibleItems: PropType.array,
+  newDescription: PropType.func,
 };
