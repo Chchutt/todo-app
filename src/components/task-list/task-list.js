@@ -13,7 +13,6 @@ export default class TaskList extends React.Component {
       const { id } = item;
       const { active } = item;
       const { status } = item;
-      console.log(id);
       return (
         <Task
           description={description}
@@ -35,5 +34,5 @@ TaskList.propTypes = {
   onToggleActive: PropType.func,
   onToggleLeft: PropType.func,
   visibleItems: PropType.array,
-  newDescription: PropType.func,
+  // newDescription: PropType.func,
 };
