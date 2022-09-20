@@ -3,7 +3,7 @@ import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import React from 'react';
 import * as PropType from 'prop-types';
 
-export default class CreatingTimeForTask extends React.Component {
+export class CreatingTimeForTask extends React.Component {
   state = {
     time: '',
   };
@@ -22,5 +22,5 @@ export default class CreatingTimeForTask extends React.Component {
   }
 }
 CreatingTimeForTask.propTypes = {
-  currentDate: PropType.any,
+  currentDate: PropType.instanceOf(Date),
 };

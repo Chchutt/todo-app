@@ -2,17 +2,13 @@ import React from 'react';
 import './task-list.css';
 import * as PropType from 'prop-types';
 
-import Task from '../task';
+import { Task } from '../task/task';
 
-export default class TaskList extends React.Component {
+export class TaskList extends React.Component {
   render() {
     const { onToggleActive, onToggleLeft, visibleItems, newDescription } = this.props;
     const element = visibleItems.map((item) => {
-      const { currentDate } = item;
-      const { description } = item;
-      const { id } = item;
-      const { active } = item;
-      const { status } = item;
+      const { currentDate, description, id, active, status } = item;
       return (
         <Task
           description={description}

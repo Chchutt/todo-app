@@ -2,7 +2,7 @@ import React from 'react';
 import './new-task-form.css';
 import PropTypes from 'prop-types';
 
-export default class NewTaskForm extends React.Component {
+export class NewTaskForm extends React.Component {
   state = {
     description: '',
   };
@@ -21,16 +21,21 @@ export default class NewTaskForm extends React.Component {
   };
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          type="text"
-          placeholder="What needs to be done?"
-          className="new-todo"
-          autoFocus
-          onChange={this.onLabelChange}
-          value={this.state.description}
-        />
-      </form>
+      <input
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            return this.onSubmit(e);
+          } else {
+            return this.onLabelChange;
+          }
+        }}
+        type="text"
+        placeholder="What needs to be done?"
+        className="new-todo"
+        autoFocus
+        onChange={this.onLabelChange}
+        value={this.state.description}
+      />
     );
   }
 }

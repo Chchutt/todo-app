@@ -1,11 +1,11 @@
 import React from 'react';
 
-import AppHeader from '../app-header/app-header';
-import Footer from '../footer/footer';
-import TaskList from '../task-list/task-list';
+import { AppHeader } from '../app-header/app-header';
+import { Footer } from '../footer/footer';
+import { TaskList } from '../task-list/task-list';
 import './todo-app.css';
 
-export default class TodoApp extends React.Component {
+export class TodoApp extends React.Component {
   maxId = 100;
   state = {
     tasksData: [

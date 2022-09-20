@@ -1,11 +1,11 @@
 import * as PropType from 'prop-types';
 import React from 'react';
 
-import NewTaskForm from '../new-task-form/new-task-form';
+import { NewTaskForm } from '../new-task-form/new-task-form';
 
 import './app-header.css';
 
-export default class AppHeader extends React.Component {
+export class AppHeader extends React.Component {
   render() {
     return (
       <header className="header__container">

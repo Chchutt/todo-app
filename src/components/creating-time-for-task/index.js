@@ -1,3 +1,3 @@
-import CreatingTimeForTask from './creacting-time-for-task';
+import { CreatingTimeForTask } from './creacting-time-for-task';
 
 export default CreatingTimeForTask;

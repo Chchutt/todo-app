@@ -2,7 +2,7 @@ import React from 'react';
 import './tasks-filter.css';
 import * as PropType from 'prop-types';
 
-export default class TasksFilter extends React.Component {
+export class TasksFilter extends React.Component {
   render() {
     const { filterChange } = this.props;
     const onBtnClick = (e, fn) => {

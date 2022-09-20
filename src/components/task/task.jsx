@@ -2,9 +2,9 @@ import React from 'react';
 import './task.css';
 import * as PropType from 'prop-types';
 
-import CreactingTimeForTask from '../creating-time-for-task/creacting-time-for-task';
+import { CreatingTimeForTask } from '../creating-time-for-task/creacting-time-for-task';
 
-export default class Task extends React.Component {
+export class Task extends React.Component {
   state = {
     view: 'hidden',
     divView: 'view',
@@ -67,7 +67,7 @@ export default class Task extends React.Component {
           <input className="toggle" type="checkbox" onChange={this.boxCheck} checked={check} onClick={onToggleActive} />
           <label>
             <span className="description">{description}</span>
-            <CreactingTimeForTask currentDate={currentDate} />
+            <CreatingTimeForTask currentDate={currentDate} />
           </label>
           <button className="icon icon-edit" onClick={() => this.onToggleEdit()} />
           <button className="icon icon-destroy" onClick={onToggleLeft} />
@@ -88,9 +88,9 @@ export default class Task extends React.Component {
 
 Task.propTypes = {
   newDescription: PropType.func,
-  id: PropType.any,
+  id: PropType.number,
   active: PropType.bool,
-  currentDate: PropType.any,
+  currentDate: PropType.instanceOf(Date),
   onToggleActive: PropType.func,
   onToggleLeft: PropType.func,
   status: PropType.string,
