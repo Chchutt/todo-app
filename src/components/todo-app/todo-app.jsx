@@ -14,6 +14,7 @@ export class TodoApp extends React.Component {
       this.createTodoItem('Active task'),
     ],
     filter: 'all',
+    counter: 0,
   };
   createTodoItem(text) {
     return {
@@ -23,6 +24,7 @@ export class TodoApp extends React.Component {
       editing: false,
       status: 'active',
       currentDate: new Date(),
+      time: '0',
     };
   }
 
@@ -66,6 +68,16 @@ export class TodoApp extends React.Component {
       };
     });
   };
+
+  counter = () => {
+    this.setState(({ counter }) => {
+      const value = counter++;
+      return {
+        counter: value,
+      };
+    });
+  };
+
   filterComAll = () => {
     this.setState(({ tasksData }) => {
       const idx = tasksData.filter((el) => !el.active);
@@ -90,6 +102,7 @@ export class TodoApp extends React.Component {
   };
 
   onToggleLeft = (id) => {
+    localStorage.removeItem('time' + id);
     this.setState(({ tasksData }) => {
       const idx = tasksData.findIndex((el) => el.id === id);
       const newArray = [...tasksData.slice(0, idx), ...tasksData.slice(idx + 1)];
@@ -127,6 +140,7 @@ export class TodoApp extends React.Component {
             onToggleActive={this.onToggleActive}
             onToggleLeft={this.onToggleLeft}
             newDescription={this.newDescription}
+            counter={this.counter}
           />
           <Footer
             clearFilter={this.filterComAll}

@@ -6,7 +6,7 @@ import { Task } from '../task/task';
 
 export class TaskList extends React.Component {
   render() {
-    const { onToggleActive, onToggleLeft, visibleItems, newDescription } = this.props;
+    const { onToggleActive, onToggleLeft, visibleItems, newDescription, counter } = this.props;
     const element = visibleItems.map((item) => {
       const { currentDate, description, id, active, status } = item;
       return (
@@ -20,6 +20,7 @@ export class TaskList extends React.Component {
           onToggleActive={() => onToggleActive(id)}
           onToggleLeft={() => onToggleLeft(id)}
           newDescription={newDescription}
+          counter={counter}
         />
       );
     });

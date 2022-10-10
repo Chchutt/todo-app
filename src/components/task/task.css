@@ -1,3 +1,28 @@
 form{
     margin: 0;
 }
+.todo-list li .icon-pause,
+.todo-list li .icon-play {
+    font-size: 15px;
+    width: 18px;
+    height: 18px;
+}
+.icon-pause:after {
+    content: '⏸';
+    position: absolute;
+    transform: translate(260px, -25px);
+    font-size: 20px;
+}
+
+.icon-play:after {
+    content: '▶';
+    position: absolute;
+    transform: translate(240px, -25px);
+    font-size: 20px;
+}
+
+.timer__time{
+    position: absolute;
+    transform: translate(295px, -40px);
+    font-size: 15px;
+}
